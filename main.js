@@ -1,37 +1,40 @@
-var getTreeHeight = document.getElementById("enter-height").value;
-var getTreeChar = document.getElementById("enter-char").value;
+var getTreeHeight = document.getElementById("enter-height");
+var getTreeChar = document.getElementById("enter-char");
 var button = document.getElementById("tree-button");
+var growTree = "";
 
+function checkUserInput (clickEvent) {
+	if (getTreeHeight.value === "" && getTreeChar.value === "") {
+		alert("You must fill out both fields!");
+	} else {
+		tree();
+	}
+}
 
-function tree (inputInfo) {
+function tree () {
 	var treeElements = {
-		height: getTreeHeight,
-		character: getTreeChar
+		height: getTreeHeight.value,
+		character: getTreeChar.value
 	};
+	treeMath(treeElements);
 }
 
 function treeMath (makeTree) {
 	for (var t=0; t<makeTree.height; t++) {
-		var growTree = "";
-		} for (var u=0; u<(makeTree.height - (t + 1)); u++) {		
+		for (var t=0; t<(makeTree.height - (t + 1)); t++) {		
 			growTree += " ";
-		} for (var v = 0; v < ((t * 2) + 1); v++) {
+		} 
+
+		for (var t = 0; t < ((t * 2) + 1); t++) {
 			growTree += makeTree.character;
-	}
-			console.log(growTree);
-}
-
-function checkUserInput (clickEvent) {
-	if (getTreeHeight === "" && getTreeChar === "") {
-		alert("You must fill out both fields!");
-	} else {
-		console.log(growTree);
-	}
-
+		}
+		growTree += "\n";
+	} 
+	console.log(growTree);
 }
 
 
-button.addEventListener("click", tree);
+button.addEventListener("click", checkUserInput);
 
 // }
 
