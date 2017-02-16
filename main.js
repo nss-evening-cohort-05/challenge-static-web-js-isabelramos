@@ -24,7 +24,6 @@ function treeMath (makeTree) {
 		for (var t=0; t<(makeTree.height - (t + 1)); t++) {		
 			growTree += " ";
 		} 
-
 		for (var t = 0; t < ((t * 2) + 1); t++) {
 			growTree += makeTree.character;
 		}
@@ -33,13 +32,11 @@ function treeMath (makeTree) {
 	console.log(growTree);
 }
 
+function pressEnter (event) {
+    event.which = event.which || event.keyCode;
+    if (event.which === 13) {
+	console.log(growTree);
+    }
+}
 
 button.addEventListener("click", checkUserInput);
-
-// }
-
-		// treeHeight: getTreeHeight.value - (i + 1),
-		// treeChar: getTreeChar.value (2 * i) + 1
-
-
-// button.addEventListener("click", tree);
