@@ -21,10 +21,10 @@ function tree () {
 
 function treeMath (makeTree) {
 	for (var t=0; t<makeTree.height; t++) {
-		for (var t=0; t<(makeTree.height - (t + 1)); t++) {		
+		for (var u=0; u<(makeTree.height - (t + 1)); u++) {		
 			growTree += " ";
 		} 
-		for (var t = 0; t < ((t * 2) + 1); t++) {
+		for (var v=0; v<((t * 2) + 1); v++) {
 			growTree += makeTree.character;
 		}
 		growTree += "\n";
@@ -32,10 +32,9 @@ function treeMath (makeTree) {
 	console.log(growTree);
 }
 
-function pressEnter (event) {
-    event.which = event.which || event.keyCode;
-    if (event.which === 13) {
-	console.log(growTree);
+function pressEnter () {
+    if (event.keyCode === 13) {
+	tree();
     }
 }
 
