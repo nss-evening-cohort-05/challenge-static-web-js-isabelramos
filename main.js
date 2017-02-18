@@ -1,10 +1,9 @@
 var getTreeHeight = document.getElementById("enter-height");
 var getTreeChar = document.getElementById("enter-char");
 var button = document.getElementById("tree-button");
-var growTree = "";
 
 function checkUserInput (clickEvent) {
-	if (getTreeHeight.value === "" && getTreeChar.value === "") {
+	if (getTreeHeight.value === "" || getTreeChar.value === "") {
 		alert("You must fill out both fields!");
 	} else {
 		tree();
@@ -20,6 +19,7 @@ function tree () {
 }
 
 function treeMath (makeTree) {
+	var growTree = "";
 	for (var t=0; t<makeTree.height; t++) {
 		for (var u=0; u<(makeTree.height - (t + 1)); u++) {		
 			growTree += " ";
@@ -32,10 +32,13 @@ function treeMath (makeTree) {
 	console.log(growTree);
 }
 
-function pressEnter () {
+function pressEnter (event) {
     if (event.keyCode === 13) {
-	tree();
+	checkUserInput();
     }
 }
 
+
+getTreeHeight.addEventListener("keypress", pressEnter);
+getTreeChar.addEventListener("keypress", pressEnter);
 button.addEventListener("click", checkUserInput);
